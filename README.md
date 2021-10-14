@@ -94,7 +94,7 @@ make
 sudo make install
 ```
 
-### UPF buid
+### UPF build
 ```
 cd ~
 cd go/src/free5gc/NFs/upf
