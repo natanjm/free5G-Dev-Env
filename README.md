@@ -16,6 +16,7 @@ or
 ```
 sudo apt-get install -y linux-image-5.4.0-42-generic
 ```
+Then reboot to aply the changes
 
 ### Go installation
 If another version of Go is installed, remove the existing version and install Go 1.14.4:
