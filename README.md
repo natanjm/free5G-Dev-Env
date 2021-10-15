@@ -194,9 +194,9 @@ cd ~
 go/src/free5gc/webconsole/frontend
 REACT_APP_HTTP_API_URL=http://127.0.0.1:5000/api PORT=3000 yarn start
 ```
-Access url: http://localhost:3000/#/subscriber
-User: admin
-Password: free5gc
+Access url: http://localhost:3000/#/subscriber <br/>
+User: admin <br/>
+Password: free5gc <br/>
 
 After you can add a new subscriber and save these values:
 Submit without changing any field.
