@@ -198,8 +198,7 @@ Access url: http://localhost:3000/#/subscriber <br/>
 User: admin <br/>
 Password: free5gc <br/>
 
-After you can add a new subscriber and save these values:
-Submit without changing any field.
+After you can add a new subscriber and save these values (submit without changing any field): 
 
 ![Capturar](https://user-images.githubusercontent.com/36445263/137420977-997c9671-01d1-4aa1-a10c-6039a23178b0.PNG)
 
