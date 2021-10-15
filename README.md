@@ -174,6 +174,7 @@ After opening the project in the Goland IDE, you can access the network function
 You can do this for every network function, just not for UPF and N3IWF. The N3IWF function will not be used in this tutorial.
 
 #### UPF
+To execute the UPF function:
 ```
 cd ~
 cd go/src/free5gc/NFs/upf/build
