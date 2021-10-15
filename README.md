@@ -85,7 +85,8 @@ cd go/src
 git clone --recursive -b v3.0.6 -j `nproc` https://github.com/free5gc/free5gc.git
 ```
 
-### UPF dependencies
+### UPF
+Installing dependencies:
 ```
 cd ~
 git clone https://github.com/free5gc/gtp5g.git
@@ -94,8 +95,7 @@ git checkout v0.3.2
 make
 sudo make install
 ```
-
-### UPF build
+Building the UPF:
 ```
 cd ~
 cd go/src/free5gc/NFs/upf
@@ -104,3 +104,110 @@ cd build
 cmake ..
 make -j`nproc`
 ```
+Setup environment
+```
+# (Must) IPv4 forwarding
+sudo sysctl -a | grep forward        # check sys rule
+sudo sysctl -w net.ipv4.ip_forward=1
+
+# (Recommend) Forwarding chain in iptables can forward packet
+sudo iptables -A FORWARD -j ACCEPT
+
+# (Recommend) Close ubuntu firewall
+sudo systemctl stop ufw
+sudo systemctl disable ufw
+
+# (Optional) Using NAT for UE to access data network
+sudo iptables -t nat -A POSTROUTING -o <YOUR_NETWORK_INTERFACE_LABEL> -j MASQUERADE
+```
+
+### Web Console
+Installing dependencies:
+```
+sudo apt remove cmdtest
+sudo apt remove yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt-get install -y nodejs yarn
+```
+Building the Web Console:
+```
+cd ~
+cd go/src/webconsole/frontend
+yarn install
+yarn build
+rm -rf ../public
+cp -R build ../public
+```
+
+### RAN Tester
+Cloning the project:
+```
+cd ~
+cd go/src
+git clone https://github.com/my5G/my5G-RANTester.git
+```
+Installing dependencies:
+```
+cd my5G-RANTester
+go mod download
+```
+Build the binary:
+```
+cd cmd 
+go build app.go
+```
+
+### Debugging/Testing the 5G Core
+The network functions must to be executed in the right order. Check it below:
+```
+NRF -> UDR -> UDM -> AUSF -> NSSF -> AMF -> PCF -> UPF -> SMF
+```
+After you can run the web server and the frontend.
+
+#### NFs
+After opening the project in the Goland IDE, you can access the network functions folders in NFs. Inside the network function folder there is a main file with the same name as the folder, this way you can debug it to test the network function.
+
+![executar_nf](https://user-images.githubusercontent.com/36445263/137417909-64c9d0b5-9354-4cb5-bcd8-c39034c171b1.PNG)
+
+You can do this for every network function, just not for UPF and N3IWF. The N3IWF function will not be used in this tutorial.
+
+#### UPF
+```
+cd ~
+cd go/src/free5gc/NFs/upf/build
+sudo -E ./bin/free5gc-upfd
+```
+
+#### Web Server
+```
+cd ~
+cd go/src/free5gc/webconsole
+go run server.go
+```
+
+#### Frontend
+```
+cd ~
+go/src/free5gc/webconsole/frontend
+REACT_APP_HTTP_API_URL=http://127.0.0.1:5000/api PORT=3000 yarn start
+```
+Access url: http://localhost:3000/#/subscriber
+User: admin
+Password: free5gc
+
+After you can add a new subscriber and save these values:
+Submit without changing any field.
+
+![Capturar](https://user-images.githubusercontent.com/36445263/137420977-997c9671-01d1-4aa1-a10c-6039a23178b0.PNG)
+
+These data should be inserted in the ran tester configuration file.
+
+#### Using the RAN Tester
+Open RAN Tester project, access config/config.yml and change the msin, key and opc values with the submited subscriber values. Like this:
+
+![config](https://user-images.githubusercontent.com/36445263/137422134-3e834120-fd31-4b07-8268-ef425500c2c2.png)
+
+
+
