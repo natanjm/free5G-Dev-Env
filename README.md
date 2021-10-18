@@ -48,7 +48,6 @@ sudo systemctl start mongodb
 
 ### User-plane Supporting Packages
 ```
-sudo apt -y update
 sudo apt -y install gcc       
 sudo apt -y install g++
 sudo apt -y install cmake
