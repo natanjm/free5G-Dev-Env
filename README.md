@@ -209,5 +209,12 @@ Open RAN Tester project, access config/config.yml and change the msin, key and o
 
 ![config](https://user-images.githubusercontent.com/36445263/137422134-3e834120-fd31-4b07-8268-ef425500c2c2.png)
 
+To run the RAN Tester:
+```
+cd ~
+cd go/src/my5G-RANTester
+sudo su
+./app ue
+```
 
 
