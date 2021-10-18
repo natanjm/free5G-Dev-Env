@@ -134,7 +134,7 @@ sudo apt-get install -y nodejs yarn
 Building the Web Console:
 ```
 cd ~
-cd go/src/webconsole/frontend
+cd go/src/free5gc/webconsole/frontend
 yarn install
 yarn build
 rm -rf ../public
