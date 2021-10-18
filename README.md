@@ -57,6 +57,7 @@ sudo apt -y install pkg-config
 sudo apt -y install libmnl-dev
 sudo apt -y install libyaml-dev
 sudo apt -y install net-tools
+sudo apt install curl
 go get -u github.com/sirupsen/logrus
 ```
 
