@@ -78,6 +78,12 @@ sudo systemctl stop ufw
 sudo snap install goland --classic
 ```
 
+When installation is complete, check GOROOT and GOPATH in settings menu. It should look like below:
+
+![Capturar](https://user-images.githubusercontent.com/36445263/138003896-ab4d286c-6578-4aae-9327-5ddb7898b1bf.PNG)
+
+![Capturar2](https://user-images.githubusercontent.com/36445263/138003909-908d8982-54df-41d2-9da8-b2b4442d80e6.PNG)
+
 ### Clone the free5GC repository
 ```
 cd ~
