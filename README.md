@@ -222,5 +222,10 @@ cd go/src/my5G-RANTester
 sudo su
 ./app ue
 ```
+#### RAN Tester config.yml
 
+In addition to being able to configure the UE data, you can also configure the AMF. In this case, the AMF function and the RAN Tester was installed on the same system, in this way it will look like this:
+
+
+![amf](https://user-images.githubusercontent.com/36445263/138008027-2d034716-9c05-439c-be01-8b875bdd4020.jpg)
 
