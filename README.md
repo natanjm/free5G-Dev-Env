@@ -197,7 +197,7 @@ go run server.go
 #### Frontend
 ```
 cd ~
-go/src/free5gc/webconsole/frontend
+cd go/src/free5gc/webconsole/frontend
 REACT_APP_HTTP_API_URL=http://127.0.0.1:5000/api PORT=3000 yarn start
 ```
 Access url: http://localhost:3000/#/subscriber <br/>
